@@ -1,0 +1,15 @@
+schema{
+    query: Query
+}
+
+type Query{
+    allWallets: [Wallet]
+    wallet(id: String): Wallet
+}
+
+type Wallet {
+    walletId: String!
+    userId: String!
+    walletName: String
+    walletType: String!
+}
