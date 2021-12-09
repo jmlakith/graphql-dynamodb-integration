@@ -5,7 +5,7 @@ import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import poc.example.wallet.model.Wallet;
-import poc.example.wallet.repo.WalletRepository;
+import poc.example.wallet.repo.WalletRepo;
 
 import java.util.List;
 
@@ -13,11 +13,11 @@ import java.util.List;
 public class AllWalletsDataFetcher implements DataFetcher<List<Wallet>> {
 
     @Autowired
-    private WalletRepository walletRepository;
+    private WalletRepo walletDynamoRepo;
 
     @Override
     public List<Wallet> get(DataFetchingEnvironment environment) {
 
-        return walletRepository.findAll();
+        return walletDynamoRepo.findAll();
     }
 }

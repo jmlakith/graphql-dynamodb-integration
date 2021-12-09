@@ -1,4 +1,4 @@
-package poc.example.wallet.resource;
+package poc.example.wallet.controller;
 
 import graphql.ExecutionResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import poc.example.wallet.service.GraphQLService;
 
-@RequestMapping("/finance/wallets")
+@RequestMapping("graph/finance/wallets")
 @RestController
-public class WalletResource {
+public class WalletGraphController {
 
     @Autowired
     private GraphQLService graphQLService;
