@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import poc.example.wallet.model.Wallet;
-import poc.example.wallet.repo.WalletRepository;
+import poc.example.wallet.repo.WalletRepo;
 import poc.example.wallet.service.dataFetcher.AllWalletsDataFetcher;
 import poc.example.wallet.service.dataFetcher.WalletDataFetcher;
 
@@ -24,7 +24,7 @@ import java.util.stream.Stream;
 public class GraphQLService {
 
     @Autowired
-    private WalletRepository repo;
+    private WalletRepo dynamoRepo;
 
     @Value("classpath:wallets.graphql")
     Resource resource;
@@ -34,7 +34,6 @@ public class GraphQLService {
     private AllWalletsDataFetcher allWalletsDataFetcher;
     @Autowired
     private WalletDataFetcher walletDataFetcher;
-
 
 
     @PostConstruct
@@ -56,7 +55,7 @@ public class GraphQLService {
                         new Wallet("124", "id124", "my_wallet2", "POINT"),
                         new Wallet("125", "id125", "my_wallet3", "CREDIT")
                 )
-                .forEach(wallet -> repo.save(wallet));
+                .forEach(wallet -> dynamoRepo.save(wallet));
     }
 
     private RuntimeWiring buildRuntimeWiring() {
